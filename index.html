@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroConnect - Qishloq xo'jaligini raqamlashtirish</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background: #10b981;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 28px;
+            width: 2px;
+            height: calc(100% - 20px);
+            background: linear-gradient(180deg, #10b981 0%, rgba(16, 185, 129, 0.2) 100%);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 scroll-smooth">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">A</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">AgroConnect</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#problem" class="text-gray-600 hover:text-green-600 transition">Muammo</a>
+                    <a href="#solution" class="text-gray-600 hover:text-green-600 transition">Yechim</a>
+                    <a href="#market" class="text-gray-600 hover:text-green-600 transition">Bozor</a>
+                    <a href="#strategy" class="text-gray-600 hover:text-green-600 transition">Strategiya</a>
+                    <a href="#team" class="text-gray-600 hover:text-green-600 transition">Jamoa</a>
+                </div>
+                <a href="#contact" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">
+                    Bog'lanish
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white pt-32 pb-20 mt-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fadeInUp">
+                    <!-- <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                        <span class="text-sm font-semibold">🚀 Seed Round: $50K investitsiya qidirilmoqda</span>
+                    </div> -->
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                        Qishloq xo'jaligini <br />
+                        <span class="text-yellow-300">raqamlashtirish</span>
+                    </h1>
+                    <p class="text-xl text-green-100 mb-8 leading-relaxed">
+                        O'zbekistondagi 3.5 million dehqon uchun zamonaviy savdo platformasi.
+                        210 milliard bozor imkoniyati.
+                    </p>
+                    <!-- <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="bg-white text-green-700 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition text-center">
+                            Investitsiya qilish
+                        </a>
+                        <a href="#demo" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition text-center">
+                            Demo ko'rish
+                        </a>
+                    </div> -->
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/20">
+                        <div>
+                            <div class="text-3xl font-bold text-yellow-300">210B</div>
+                            <div class="text-sm text-green-100">Bozor hajmi</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-yellow-300">3.5M</div>
+                            <div class="text-sm text-green-100">Dehqonlar</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-yellow-300">0</div>
+                            <div class="text-sm text-green-100">Raqobatchilar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f0fdf4' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%2310b981' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3E📱 Platform Demo%3C/text%3E%3Crect x='50' y='50' width='300' height='200' fill='none' stroke='%2310b981' stroke-width='2' rx='10'/%3E%3C/svg%3E"
+                            alt="Platform mockup" class="rounded-lg shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-green-600 font-semibold text-sm uppercase tracking-wider">Muammo</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-4 mb-6">
+                    Hozirgi tizimning kamchiliklari
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Har yili dehqonlar va klintlar 50 milliard qiymatdagi mahsulotni nosamarali tizim orqali sotishadi
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-red-50 border-2 border-red-200 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-red-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">📞</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Samarasiz qidiruv</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Dehqonlar telefon orqali klintlarni qidirishda 2-3 kun vaqt sarflaydi.
+                        Ma'lumotlar tarqoq, narxlar noma'lum.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-red-200">
+                        <span class="text-red-600 font-semibold">Yo'qotilgan vaqt: 40 soat/oy</span>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-orange-50 border-2 border-orange-200 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">💸</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Past narxlar</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Vositachilar zanjiri tufayli dehqonlar mahsulotini 30-40% arzonroq sotishga majbur.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-orange-200">
+                        <span class="text-orange-600 font-semibold">Yo'qotish: 30-40% daromad</span>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-yellow-50 border-2 border-yellow-200 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-yellow-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🚛</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Transport muammosi</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Haydovchi va ortgichlarni topish qiyin. Ko'pincha savdo buziladi yoki kechikadi.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-yellow-200">
+                        <span class="text-yellow-600 font-semibold">Yo'qotish: 15% mahsulot</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-12 text-center">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">
+                    Jami yo'qotish: <span class="text-red-600">15 milliard/yil</span>
+                </h3>
+                <p class="text-xl text-gray-600">
+                    O'zbekiston qishloq xo'jaligi nosamarali tizim tufayli ulkan yo'qotishlarga duch kelmoqda
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-green-600 font-semibold text-sm uppercase tracking-wider">Yechim</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-4 mb-6">
+                    AgroConnect Platformasi
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Barcha ishtirokchilarni bitta platformada birlashtiramiz
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="bg-white rounded-2xl p-6 border-2 border-green-100 hover:border-green-300 transition">
+                    <div class="text-5xl mb-4">👨‍🌾</div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Dehqonlar</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>✓ E'lon berish (2 daqiqa)</li>
+                        <li>✓ Narxni o'zi belgilash</li>
+                        <li>✓ Ko'p takliflar olish</li>
+                        <li>✓ Transport topish</li>
+                    </ul>
+                    <div class="mt-4 pt-4 border-t">
+                        <span class="text-xs text-green-600 font-semibold">+40% yuqori narx</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 border-2 border-blue-100 hover:border-blue-300 transition">
+                    <div class="text-5xl mb-4">🤝</div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Klintlar</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>✓ Barcha e'lonlarni ko'rish</li>
+                        <li>✓ Filtrlash va qidiruv</li>
+                        <li>✓ To'g'ridan-to'g'ri sotib olish</li>
+                        <li>✓ Transport yollash</li>
+                    </ul>
+                    <div class="mt-4 pt-4 border-t">
+                        <span class="text-xs text-blue-600 font-semibold">-50% vaqt tejash</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 border-2 border-purple-100 hover:border-purple-300 transition">
+                    <div class="text-5xl mb-4">🚛</div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Haydovchilar</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>✓ Buyurtmalarni olish</li>
+                        <li>✓ Marshrut rejalashtirish</li>
+                        <li>✓ Online to'lov</li>
+                        <li>✓ Reyting tizimi</li>
+                    </ul>
+                    <div class="mt-4 pt-4 border-t">
+                        <span class="text-xs text-purple-600 font-semibold">+60% buyurtmalar</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 border-2 border-orange-100 hover:border-orange-300 transition">
+                    <div class="text-5xl mb-4">👷</div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Ortgichlar</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>✓ Ish topish (petak kerak emas)</li>
+                        <li>✓ Kalendar boshqaruvi</li>
+                        <li>✓ Online to'lov</li>
+                        <li>✓ Jamoa reytingi</li>
+                    </ul>
+                    <div class="mt-4 pt-4 border-t">
+                        <span class="text-xs text-orange-600 font-semibold">+30% daromad</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="bg-white rounded-3xl shadow-xl p-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-12 text-center">Platform imkoniyatlari</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Real-time Chat</h4>
+                        <p class="text-gray-600">Tezkor muloqot va narx kelishuvi</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">To'lov integratsiya</h4>
+                        <p class="text-gray-600">Click, Payme orqali xavfsiz to'lov</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Reyting tizimi</h4>
+                        <p class="text-gray-600">Ishonchli hamkorlarni toping</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Analitika</h4>
+                        <p class="text-gray-600">Narxlar tahlili va prognoz</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">GPS Tracking</h4>
+                        <p class="text-gray-600">Transport jonli kuzatuv</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">SMS Bot</h4>
+                        <p class="text-gray-600">Internet yo'q joyda ham ishlaydi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Size -->
+    <section id="market" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-green-600 font-semibold text-sm uppercase tracking-wider">Bozor hajmi</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-4 mb-6">
+                    Ulkan imkoniyat
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="stat-card rounded-2xl p-8">
+                    <div class="text-sm text-gray-600 mb-2 font-semibold">TAM (Total Market)</div>
+                    <div class="text-5xl font-bold gradient-text mb-4">210B</div>
+                    <div class="text-gray-700 mb-4">O'zbekiston qishloq xo'jaligi</div>
+                    <div class="text-sm text-gray-600">
+                        <div>• 3.5M dehqon xo'jaliklari</div>
+                        <div>• 20 bitim/yil o'rtacha</div>
+                        <div>• 3,000 o'rtacha bitim</div>
+                    </div>
+                </div>
+
+                <div class="stat-card rounded-2xl p-8">
+                    <div class="text-sm text-gray-600 mb-2 font-semibold">SAM (5 yilda)</div>
+                    <div class="text-5xl font-bold gradient-text mb-4">30B</div>
+                    <div class="text-gray-700 mb-4">Raqamli segment</div>
+                    <div class="text-sm text-gray-600">
+                        <div>• 500K digital fermalar</div>
+                        <div>• Smartphone + Internet</div>
+                        <div>• Bizning 2% ulush: 600M</div>
+                    </div>
+                </div>
+
+                <div class="stat-card rounded-2xl p-8">
+                    <div class="text-sm text-gray-600 mb-2 font-semibold">SOM (1-yil)</div>
+                    <div class="text-5xl font-bold gradient-text mb-4">9.4M</div>
+                    <div class="text-gray-700 mb-4">Qashqadaryo</div>
+                    <div class="text-sm text-gray-600">
+                        <div>• 5,000 dastlabki foydalanuvchi</div>
+                        <div>• 15 bitim/yil</div>
+                        <div>• 5% market share</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-12">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-6">Nima uchun hozir?</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="font-semibold text-gray-900">Smartphone penetration 70%+</div>
+                                    <div class="text-gray-600 text-sm">Qishloqda ham smartfonlar keng tarqalgan</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M
+                                        9:16 PM<function_calls>
+                                            
+<invoke name=" artifacts">
+                                            <parameter name="command">update</parameter>
+                                            <parameter name="id">investor_landing_page</parameter>
+                                            <parameter name="old_str">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M</parameter>
+<parameter name=" new_str">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="font-semibold text-gray-900">4G qamrov 80%+ qishloqlarda</div>
+                                    <div class="text-gray-600 text-sm">Internet tezligi yaxshi</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="font-semibold text-gray-900">Hukumat qo'llab-quvvatlaydi</div>
+                                    <div class="text-gray-600 text-sm">AgriTech prioritet yo'nalish</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="font-semibold text-gray-900">Raqobat yo'q</div>
+                                    <div class="text-gray-600 text-sm">Birinchi bo'lib kiramiz</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-xl">
+                        <h4 class="text-xl font-bold text-gray-900 mb-6">Xalqaro hamkasblar</h4>
+                        <div class="space-y-4">
+                            <div class="border-b pb-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold">Ninjacart 🇮🇳</span>
+                                    <span class="text-green-600 font-bold">1B</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Hindiston, 150M funding</div>
+                            </div>
+                            <div class="border-b pb-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold">Twiga Foods 🇰🇪</span>
+                                    <span class="text-green-600 font-bold">500M</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Kenya, 200M funding</div>
+                            </div>
+                            <div class="pb-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold">Agrosmart 🇧🇷</span>
+                                    <span class="text-green-600 font-bold">200M</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Braziliya, 50M funding</div>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-6 border-t">
+                            <div class="text-sm text-gray-600 text-center">
+                                O'zbekiston bozori ularnikiga o'xshash. <br />
+                                <span class="font-semibold text-green-600">Biz ham muvaffaqiyatga erisha olamiz!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Strategy Timeline -->
+    <section id="strategy" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-green-600 font-semibold text-sm uppercase tracking-wider">Kengayish
+                    strategiyasi</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-4 mb-6">
+                    5 yilda 750M+ valuation
+                </h2>
+            </div>
+
+            <div class="space-y-12">
+                <div class="timeline-item">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <span class="text-sm font-semibold text-green-600">FAZA 1</span>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-2">Qashqadaryo (12 oy)</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-3xl font-bold text-green-600">50K</div>
+                                <div class="text-sm text-gray-600">Investment</div>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-4 gap-6 mt-6">
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">5,000</div>
+                                <div class="text-sm text-gray-600">Foydalanuvchilar</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">500</div>
+                                <div class="text-sm text-gray-600">Bitim/oy</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">600K</div>
+                                <div class="text-sm text-gray-600">Revenue</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">2M</div>
+                                <div class="text-sm text-gray-600">Valuation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <span class="text-sm font-semibold text-green-600">FAZA 2-3</span>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-2">O'zbekiston (Yil 2-3)</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-3xl font-bold text-green-600">500K</div>
+                                <div class="text-sm text-gray-600">Series A</div>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-4 gap-6 mt-6">
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">500K</div>
+                                <div class="text-sm text-gray-600">Foydalanuvchilar</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">20K</div>
+                                <div class="text-sm text-gray-600">Bitim/oy</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">30M</div>
+                                <div class="text-sm text-gray-600">Revenue</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">100M</div>
+                                <div class="text-sm text-gray-600">Valuation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <span class="text-sm font-semibold text-green-600">FAZA 4-5</span>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-2">Markaziy Osiyo (Yil 4-5)</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-3xl font-bold text-green-600">5M</div>
+                                <div class="text-sm text-gray-600">Series B</div>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-4 gap-6 mt-6">
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">2M</div>
+                                <div class="text-sm text-gray-600">Foydalanuvchilar</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">100K</div>
+                                <div class="text-sm text-gray-600">Bitim/oy</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">150M</div>
+                                <div class="text-sm text-gray-600">Revenue</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-900">750M</div>
+                                <div class="text-sm text-gray-600">Valuation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="mt-16 bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-12 text-white text-center">
+            <h3 class="text-3xl font-bold mb-4">10-100x Return Potential</h3>
+            <p class="text-xl text-green-100 mb-8">
+                Seed investorlar uchun 5 yilda 100x return imkoniyati
+            </p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="text-4xl font-bold mb-2">50K</div>
+                    <div class="text-green-100">Seed investment</div>
+                    <div class="text-sm text-green-200 mt-2">10% equity</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">→</div>
+                    <div class="text-green-100">5 yil</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">5M+</div>
+                    <div class="text-green-100">Exit value</div>
+                    <div class="text-sm text-green-200 mt-2">100x return</div>
+                </div>
+            </div>
+        </div> -->
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-green-600 font-semibold text-sm uppercase tracking-wider">Jamoa</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-4 mb-6">
+                    Tajribali asoschchilar
+                </h2>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-gray-50 rounded-2xl p-6 md:p-8 mb-8">
+                    <div
+                        class="flex flex-col md:flex-row items-center md:items-start md:space-x-6 space-y-6 md:space-y-0">
+
+                        <!-- RASM -->
+                        <div class="flex-shrink-0">
+                            <img src="mardon.JPG" alt="Mardon" class="w-40 h-40 sm:w-52 sm:h-52 md:w-80 md:h-80 
+                       rounded-2xl object-cover border border-gray-200 shadow-md" />
+                        </div>
+
+                        <!-- TEXT -->
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-1">
+                                Asoschi
+                            </h3>
+
+                            <div class="text-green-600 font-semibold">
+                                CEO & CTO
+                            </div>
+
+                            <div class="text-sm text-gray-500 mb-4">
+                                <span class="font-semibold text-gray-700">cubosoft.uz</span> va
+                                <span class="font-semibold text-gray-700">bookup.uz</span>
+                                asoschisi va CEO’si
+                            </div>
+                            <div class="text-gray-600 space-y-2 text-sm sm:text-base">
+                                <p>✓ Full Stack Developer (5+ yil tajriba)</p>
+                                <p>✓ Madaniyat vazirligida Raqamlashtirish va axborot xavfsizligi bo'limida ishlaydi</p>
+                                <p>✓ Qashqadaryoda tug'ilgan va o'sgan</p>
+                                <p>✓ Yoshligida dehqonchilik bilan shug'ullangan</p>
+                                <p>✓ Mahalliy bozor va madaniyatni tushunadi</p>
+                                <p>✓ 50+ dehqon bilan interview o'tkazgan</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">6 oy ichida qo'shiladi:</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-xl p-6">
+                            <div class="text-4xl mb-3">👔</div>
+                            <h4 class="font-bold text-gray-900 mb-2">COO</h4>
+                            <p class="text-sm text-gray-600">Operations va kengayish</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6">
+                            <div class="text-4xl mb-3">📢</div>
+                            <h4 class="font-bold text-gray-900 mb-2">CMO</h4>
+                            <p class="text-sm text-gray-600">Marketing va branding</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6">
+                            <div class="text-4xl mb-3">💼</div>
+                            <h4 class="font-bold text-gray-900 mb-2">Head of Sales</h4>
+                            <p class="text-sm text-gray-600">B2B hamkorliklar</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6">
+                            <div class="text-4xl mb-3">💻</div>
+                            <h4 class="font-bold text-gray-900 mb-2">Lead Developer</h4>
+                            <p class="text-sm text-gray-600">Technical team</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-green-600 to-emerald-700 text-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Biz bilan bog'lanish</h2>
+                <p class="text-xl text-green-100">
+                    Keling, O'zbekiston qishloq xo'jaligini birga o'zgartiraylik
+                </p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-12 shadow-2xl">
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <!-- <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">So'ralayotgan investitsiya</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center pb-4 border-b">
+                            <span class="text-gray-600">Miqdor:</span>
+                            <span class="font-bold text-gray-900 text-2xl">50,000</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-4 border-b">
+                            <span class="text-gray-600">Equity:</span>
+                            <span class="font-bold text-gray-900">10-15%</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-4 border-b">
+                            <span class="text-gray-600">Valuation:</span>
+                            <span class="font-bold text-gray-900">$300-500K</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Timeline:</span>
+                            <span class="font-bold text-gray-900">12 oy</span>
+                        </div>
+                    </div>
+                </div> -->
+
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Sizga nima kerak</h3>
+                        <form class="space-y-4">
+                            <input type="text" placeholder="Ismingiz"
+                                class="w-full px-4 py-3 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none">
+                            <input type="email" placeholder="Email"
+                                class="w-full px-4 py-3 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none">
+                            <input type="tel" placeholder="Telefon"
+                                class="w-full px-4 py-3 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none">
+                            <!-- <select class="w-full px-4 py-3 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none">
+                            <option>Investitsiya miqdori</option>
+                            <option>$10,000 - $25,000</option>
+                            <option>$25,000 - $50,000</option>
+                            <option>$50,000+</option>
+                        </select> -->
+                            <textarea placeholder="Xabar (ixtiyoriy)" rows="3"
+                                class="w-full px-4 py-3 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none"></textarea>
+                            <button type="submit"
+                                class="w-full bg-green-600 text-white font-semibold py-4 rounded-lg hover:bg-green-700 transition">
+                                Bog'lanish so'rovi yuborish
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 pt-12 border-t">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">📧</div>
+                        <div class="text-sm text-gray-600 mb-1">Email</div>
+                        <div class="font-semibold text-gray-900">mardonmominov35@gmail.com</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">📱</div>
+                        <div class="text-sm text-gray-600 mb-1">Telefon</div>
+                        <div class="font-semibold text-gray-900">+998 33 333 2800</div>
+                    </div>
+                    <!-- <div class="text-center">
+                    <div class="text-4xl mb-3">📍</div>
+                    <div class="text-sm text-gray-600 mb-1">Joylashuv</div>
+                    <div class="font-semibold text-gray-900">Qashqadaryo, O'zbekiston</div>
+                </div> -->
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-green-100 mb-4">
+                    📄 <a href="#" class="underline hover:text-white">Pitch Deck yuklab olish (PDF)</a>
+                </p>
+                <p class="text-green-100">
+                    💼 <a href="#" class="underline hover:text-white">Financial Model yuklab olish (Excel)</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div
+                            class="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">A</span>
+                        </div>
+                        <span class="text-white font-bold text-lg">AgroConnect</span>
+                    </div>
+                    <p class="text-sm">
+                        O'zbekiston qishloq xo'jaligini raqamlashtirish platformasi
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Mahsulot</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-green-400">Xususiyatlar</a></li>
+                        <li><a href="#" class="hover:text-green-400">Narxlar</a></li>
+                        <li><a href="#" class="hover:text-green-400">Demo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Kompaniya</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-green-400">Biz haqimizda</a></li>
+                        <li><a href="#" class="hover:text-green-400">Blog</a></li>
+                        <li><a href="#" class="hover:text-green-400">Karyera</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Bog'lanish</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>mardonmominov35@gmail.com</li>
+                        <li>+998 33 33 2800</li>
+                        <li>Qashqadaryo, O'zbekiston</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p>&copy; 2025 AgroConnect. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Rahmat! Tez orada siz bilan bog\'lanamiz.');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
+</parameter>
